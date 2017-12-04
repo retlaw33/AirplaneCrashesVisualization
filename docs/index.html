@@ -14,7 +14,9 @@
 
     <link href="css/scrolling-nav.css" rel="stylesheet">
 
-    <script src="d3.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+	
+    <!--<script src="d3.js" charset="utf-8"></script>-->
 	
 	<style>
 	div.tooltip {	
@@ -63,13 +65,10 @@
     <header class="bg-primary text-white">
       <div class="container text-center">
         <h1>Airplane Crashes are dangerous!</h1>
-        <p class="lead">The proof that there have been a lot of air plane crashes, and that they are very dangerous! Look at the examples below</p>
-
-		<img src="resources/Crash1.gif" alt="Loading" title="Loading" />
-		<img src="resources/Crash2.gif" alt="Loading" title="Loading" />
-		<img src="resources/Crash3.gif" alt="Loading" title="Loading" />
-		<img src="resources/Crash4.gif" alt="Loading" title="Loading" />
-		<img src="resources/Crash5.gif" alt="Loading" title="Loading" />
+        <p class="lead">The proof that there have been a lot of air plane crashes, and that they are very dangerous!</p>
+		<a href="http://www.telegraph.co.uk/news/worldnews/northamerica/usa/4267596/New-York-plane-crash-Flight-1549-almost-hit-George-Washington-Bridge.html" target="_blank">
+			<img src="resources/Crash4.gif" alt="Loading" title="Loading" />
+		</a>
       </div>
     </header>
 
@@ -86,26 +85,53 @@
       </div>
     </section>
 
-    <section id="story" class="bg-light">
+
+
+    <section id="dataVisualization" class="bg-light">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Different types of crashes</h2>
+			<!--<button id="btnPrevious" value="btnPrevious" class="btn btn-lg btn-danger" style = "display: none">&laquo; Previous</button>
+			<button id="btnNext" value="btnNext" class="btn btn-lg btn-danger" style = "display: none">Next &raquo;</button>-->
+            <button value="btnCreateBarGraph" class="btn btn-lg btn-danger" 
+			onclick="
+			{
+				GenerateBarGraph(); 
+				this.style.display = 'none'; 
+			}">Create bar chart</button>
+			<div id="barGraphPlaceHolder"></div>
+			<!--var btnPrevious = document.getElementById('btnPrevious'); 
+				btnPrevious.style.display = 'block';
+				var btnNext = document.getElementById('btnNext'); 
+				btnNext.style.display = 'block';-->
+            <br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<h2>Deaths compared to survivors</h2>
+			<button value="btnCreatePieChart" class="btn btn-lg btn-danger" 
+			onclick="
+			{
+				GeneratePieChart(); 
+				this.style.display = 'none'; 
+			}">Create pie chart</button>
+			<div id="pieChartPlaceHolder"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+	
+	    <section id="story">
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Story</h2>
             <p class="lead">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="dataVisualization">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Different types of crashes</h2>
-            <a onclick="GenerateBarGraph();" value="btnStart" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-flag"></span>Start</a>
-            <div id="barGraphPlaceHolder"></div>
+              Uruguayan Air Force Flight 571 was a chartered flight carrying 45 people, including a rugby union team, their friends, family, and associates. The plane crashed in the remote Andes on 13 October 1972 in an extremely heavy snowpack. Almost half of the passengers died in the crash, and several others died of the injuries or extreme colds. The survivors had little food and no source of heat in the harsh conditions at over 3,600 metres altitude. Faced with starvation and radio news reports that the search for them had been abandoned, the survivors ate the bodies of dead passengers that had been preserved in the snow. The human remains were cut up into tiny bite size strips and left to dry in the sun. Due to food shortage, every part of the human body that could be eaten was eaten. Rescuers did not learn of the survivors until 72 days after the crash, when passengers Nando Parrado and Roberto Canessa, after a 10-day trek across the Andes, found Chilean arriero Sergio Catalán,[1] who gave them food and then alerted the authorities to the existence of the other survivors.
+			</p>
           </div>
         </div>
       </div>
@@ -116,8 +142,13 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Conslusion</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
-          </div>
+			<p class="lead">
+              If your opinion wheter airplanes are safe or not is changed, it could be a proof that Data Visualizations and only showing a part of the data can brainwash you.
+			  People like Arjen Lubach or youtube channels like Kurzgesagt have way too much power abusing this. 
+			  Ofcourse airplanes are not as dangerous as is shown above, but they are dangerous for the enviroment.
+			  A few small trips with an airplane or a large trip is the same amout of greenhouse gasses as an car emits in a whole year.
+			  So maybe planes are dangerous after all.
+			</p>
         </div>
       </div>
     </section>
@@ -141,7 +172,8 @@
     <!-- Custom JavaScript for this theme -->
     <script src="js/scrolling-nav.js"></script>
 
-    <script class="lead" type="text/javascript" src="barGraph.js"></script>
+    <script type="text/javascript" src="barGraph.js"></script>
+	<script class="lead" type="text/javascript" src="pieChart.js"></script>
   </body>
 
 </html>
