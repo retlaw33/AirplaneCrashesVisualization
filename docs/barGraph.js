@@ -4,7 +4,7 @@ function GenerateBarGraph()
 		width = 700 - margin.right - margin.left,
 		height = 500 - margin.top - margin.bottom;
 
-	var svg = d3.select("#barGraphPlaceHolder")
+	var svg = d3v3.select("#barGraphPlaceHolder")
 		.append("svg")
 		  .attr ({
 			"width": width + margin.right + margin.left,
@@ -14,21 +14,21 @@ function GenerateBarGraph()
 		  .attr("transform","translate(" + margin.left + "," + margin.right + ")");
 
 
-	var xScale = d3.scale.ordinal()
+	var xScale = d3v3.scale.ordinal()
 		.rangeRoundBands([0,width], 0.2, 0.2);
 
-	var yScale = d3.scale.linear()
+	var yScale = d3v3.scale.linear()
 		.range([height, 0]);
 
-	var xAxis = d3.svg.axis()
+	var xAxis = d3v3.svg.axis()
 		.scale(xScale)
 		.orient("bottom");
 
-	var yAxis = d3.svg.axis()
+	var yAxis = d3v3.svg.axis()
 		.scale(yScale)
 		.orient("left");
 
-	d3.csv("data/BarGraphData.csv", function(error,data) {
+	d3v3.csv("data/BarGraphData.csv", function(error,data) {
 	  if(error) console.log("Error: data not loaded!");
 	  data.forEach(function(d) {
 		d.Name = d.Name;
@@ -66,9 +66,9 @@ function GenerateBarGraph()
 
 	  // Specify the domains of the x and y scales
 	  xScale.domain(data.map(function(d) { return d.Name; }) );
-	  yScale.domain([0, d3.max(data, function(d) { return d.Deaths; } ) ]);
+	  yScale.domain([0, d3v3.max(data, function(d) { return d.Deaths; } ) ]);
 
-	  var div = d3.select("body").append("div")	
+	  var div = d3v3.select("body").append("div")	
 		.attr("class", "tooltip")				
 		.style("opacity", 0);
 	  
@@ -82,8 +82,8 @@ function GenerateBarGraph()
                 .duration(200)		
                 .style("opacity", .9);	
           div.html("Click me!")	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 28) + "px");	 },
+                .style("left", (d3v3.event.pageX) + "px")		
+                .style("top", (d3v3.event.pageY - 28) + "px");	 },
           "mouseout":  function(d) { div.transition()		
                 .duration(500)		
                 .style("opacity", 0); }, 
