@@ -22,7 +22,9 @@ function GeneratePieChart()
 		.startAngle(1.1*Math.PI)
 		.endAngle(3.1*Math.PI)
 		.value(function(d) { return d.amount; });
-
+		
+	//Deaths = 113919
+	//Survivors = 47512
 	var data = [
 	  {label: 'Deaths', amount: 113919},
 	  {label: 'Survivors', amount: 47512}
