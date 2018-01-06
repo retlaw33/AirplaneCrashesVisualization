@@ -11,26 +11,26 @@
     <title>AirplaneCrashes</title>
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/scrolling-nav.css" rel="stylesheet">
-
-	<script src="d3v3.js"></script>
-	<script src="https://d3js.org/d3.v4.min.js"></script>
+    
+    <script src="d3v3.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	
-	<style>
-	div.tooltip {	
-		position: absolute;			
-		text-align: center;			
-		width: 60px;					
-		height: 28px;					
-		padding: 2px;				
-		font: 12px sans-serif;		
-		background: lightsteelblue;	
-		border: 0px;		
-		border-radius: 8px;			
-		pointer-events: none;			
-	}
-	</style>
+    <style>
+      div.tooltip {	
+        position: absolute;			
+        text-align: center;			
+        width: 60px;					
+        height: 28px;					
+        padding: 2px;				
+        font: 12px sans-serif;		
+        background: lightsteelblue;	
+        border: 0px;		
+        border-radius: 8px;			
+        pointer-events: none;			
+      }
+    </style>
   </head>
 
   <body id="page-top">
@@ -88,31 +88,11 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-			<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>-->
-            <h2>Different types of crashes</h2>
-			<!--<button id="btnPrevious" value="btnPrevious" class="btn btn-lg btn-danger" style = "display: none">&laquo; Previous</button>
-			<button id="btnNext" value="btnNext" class="btn btn-lg btn-danger" style = "display: none">Next &raquo;</button>-->
-            <button value="btnCreateBarGraph" class="btn btn-lg btn-danger" 
-			onclick="
-			{
-				GenerateBarGraph(); 
-				this.style.display = 'none'; 
-			}">Create bar chart</button>
-			<div id="barGraphPlaceHolder" height="10000px"></div>
-			<!--var btnPrevious = document.getElementById('btnPrevious'); 
-				btnPrevious.style.display = 'block';
-				var btnNext = document.getElementById('btnNext'); 
-				btnNext.style.display = 'block';-->
+            <h2 id="barGraphHeader">Different types of crashes</h2>
+            <div id="barGraphPlaceHolder" height="10000px"></div>   
             <br>
-			<!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-			<h2>Deaths compared to survivors</h2>
-			<button value="btnCreatePieChart" class="btn btn-lg btn-danger" 
-			onclick="
-			{
-				GeneratePieChart(); 
-				this.style.display = 'none'; 
-			}">Create pie chart</button>
-			<div id="pieChartPlaceHolder"></div>
+            <h2 id="pieChartHeader">Deaths compared to survivors</h2>
+            <div id="pieChartPlaceHolder" height="10000px"></div>
           </div>
         </div>
       </div>
@@ -168,7 +148,7 @@
     <script src="js/scrolling-nav.js"></script>
 
     <script type="text/javascript" src="barGraph.js"></script>
-	<script class="lead" type="text/javascript" src="pieChart.js"></script>
+	  <script type="text/javascript" src="pieChart.js"></script>
   </body>
 
 </html>

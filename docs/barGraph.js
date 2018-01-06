@@ -1,6 +1,6 @@
 function GenerateBarGraph()
 {
-	var margin = {top: 20, right: 10, bottom: 100, left:60},
+		var margin = {top: 20, right: 10, bottom: 100, left:60},
 		width = 700 - margin.right - margin.left,
 		height = 500 - margin.top - margin.bottom;
 
@@ -144,5 +144,48 @@ function GenerateBarGraph()
 			.attr("transform", "rotate(-10)" )
 			.style("text-anchor", "middle")
 			.attr("font-size", "14px");
-        });
+				});
 }
+
+var barGraphFired = 0;
+window.addEventListener("scroll", makeBarGraphWhenInView);
+
+function makeBarGraphWhenInView()
+{
+	var isElementInView = Utils.isElementInView($('#barGraphHeader'), false);
+
+	if (isElementInView && barGraphFired == 0) 
+	{
+		GenerateBarGraph();
+		barGraphFired = 1;
+	} 
+}
+
+function isScrolledIntoView(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+function Utils() {}
+Utils.prototype = {
+    constructor: Utils,
+    isElementInView: function (element, fullyInView) {
+        var pageTop = $(window).scrollTop();
+        var pageBottom = pageTop + $(window).height();
+        var elementTop = $(element).offset().top;
+        var elementBottom = elementTop + $(element).height();
+
+        if (fullyInView === true) {
+            return ((pageTop < elementTop) && (pageBottom > elementBottom));
+        } else {
+            return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+        }
+    }
+};
+var Utils = new Utils();

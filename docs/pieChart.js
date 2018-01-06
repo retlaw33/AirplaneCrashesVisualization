@@ -75,113 +75,45 @@ function GeneratePieChart()
 	}).trigger('resize');
 }
 
-	/*	
-	var data = [10, 20, 100];
+var pieChartFired = 0;
+window.addEventListener("scroll", makePieCharthWhenInView);
 
-	var width = 960,
-		height = 500,
-		radius = Math.min(width, height) / 2;
+function makePieCharthWhenInView()
+{
+	var isElementInView = Utils.isElementInView($('#pieChartHeader'), false);
 
-	var color = d3v3.scaleOrdinal()
-		.range(["#98abc5", "#8a89a6", "#7b6888"]);
+	if (isElementInView && pieChartFired == 0) 
+	{
+		GeneratePieChart();
+		pieChartFired = 1;
+	} 
+}
 
-	console.log("1");
-		
-	var arc = d3v3.arc()
-		.outerRadius(radius - 10)
-		.innerRadius(0);
+function isScrolledIntoView(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
 
-	var labelArc = d3v3.arc()
-		.outerRadius(radius - 40)
-		.innerRadius(radius - 40);
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
 
-	var pie = d3v3.pie()
-		.sort(null)
-		.value(function(d) { return d; });
-		
-	console.log("2");
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
 
-	var svg = d3v3.select("#pieChartPlaceHolder").append("svg")
-		.attr("width", width)
-		.attr("height", height)
-	  .append("g")
-		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+function Utils() {}
+Utils.prototype = {
+    constructor: Utils,
+    isElementInView: function (element, fullyInView) {
+        var pageTop = $(window).scrollTop();
+        var pageBottom = pageTop + $(window).height();
+        var elementTop = $(element).offset().top;
+        var elementBottom = elementTop + $(element).height();
 
-	var g = svg.selectAll(".arc")
-		  .data(pie(data))
-		  .enter().append("g")
-		  .attr("class", "arc");
-
-	  g.append("path")
-		  .attr("d", arc)
-		  .style("fill", function(d) { return color(d.data); });
-
-	  g.append("text")
-		  .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-		  .attr("dy", ".35em")
-		  .text(function(d) { return d.data; });
-		  
-	console.log("3");*/
-
-
-
-
-
-		/*d3v3.csv("data/PieChartData.csv", function(d) {
-	  d.population = +d.population;
-	  console.log(+d.population);
-	  return d;
-	}, function(error, data) {
-	  if (error) throw error;*/
-	
-	
-	/*
-	console.log("0");
-	
-	var svg = d3v3.select("#pieChartPlaceHolder").append("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    radius = Math.min(width, height) / 2,
-    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-	var color = d3v3.scale.ordinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-	
-	var pie = d3v3.layout.pie()
-		.sort(null)
-		.value(function(d) { return d.population; });
-
-	var path = d3v3.svg.arc()
-		.outerRadius(radius - 10)
-		.innerRadius(0);
-
-	var label = d3v3.svg.arc()
-		.outerRadius(radius - 40)
-		.innerRadius(radius - 40);
-		
-	console.log("1");
-
-	d3v3.csv("data/PieChartData.csv", function(d) {
-	  d.population = +d.population;
-	  console.log(+d.population);
-	  return d;
-	}, function(error, data) {
-	  if (error) throw error;
-
-	  var arc = g.selectAll(".arc")
-		.data(pie(data))
-		.enter().append("g")
-		  .attr("class", "arc");
-
-	  arc.append("path")
-		  .attr("d", path)
-		  .attr("fill", function(d) { return color(d.data.age); });
-
-	  arc.append("text")
-		  .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
-		  .attr("dy", "0.35em")
-		  .text(function(d) { return d.data.age; });
-	});
-	
-	console.log("2");
-	*/
-
+        if (fullyInView === true) {
+            return ((pageTop < elementTop) && (pageBottom > elementBottom));
+        } else {
+            return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+        }
+    }
+};
+var Utils = new Utils();
