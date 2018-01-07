@@ -2,7 +2,6 @@
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -13,10 +12,14 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/scrolling-nav.css" rel="stylesheet">
     
-    <script src="d3v3.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://unpkg.com/event-drops"></script>
+    <script src="js/d3v3.js"></script>
+    <script src="js/d3v47.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!--<script src="node_modules/event-drops/dist/eventDrops.js" ></script>-->
+
+    <script src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+    <script src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
 
     <style>
       div.tooltip {	
@@ -67,7 +70,7 @@
         <h1>Airplane Crashes are dangerous!</h1>
         <p class="lead">The proof that there have been a lot of air plane crashes, and that they are very dangerous!</p>
 		<a href="http://www.telegraph.co.uk/news/worldnews/northamerica/usa/4267596/New-York-plane-crash-Flight-1549-almost-hit-George-Washington-Bridge.html" target="_blank">
-			<img src="resources/Crash4.gif" alt="Loading" title="Loading" />
+			<img src="data/Crash4.gif" alt="Loading" title="Loading" />
 		</a>
       </div>
     </header>
@@ -91,12 +94,15 @@
           <div class="col-lg-8 mx-auto">
             <h2 id="pieChartHeader">Deaths compared to survivors</h2>
             <div id="pieChartPlaceHolder" height="10000px"></div>
-            <br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <h2 id="barGraphHeader">Different types of crashes</h2>
             <div id="barGraphPlaceHolder" height="10000px"></div>   
-            <br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <h2 id="timelineHeader">All crashes over the years</h2>
-            <div id="timelinePlaceHolder" height="10000px"></div>  
+            <div id="timelinePlaceHolder" height="10000px"></div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 id="asdfasdf">Next</h2>
+            <div id="asdfasdf" height="10000px"></div>
           </div>
         </div>
       </div>
@@ -151,9 +157,9 @@
     <!-- Custom JavaScript for this theme -->
     <script src="js/scrolling-nav.js"></script>
 
-    <script type="text/javascript" src="barGraph.js"></script>
-    <script type="text/javascript" src="pieChart.js"></script>
-    <script type="text/javascript" src="timeline.js"></script>
+    <script src="js/barGraph.js"></script>
+    <script src="js/pieChart.js"></script>
+    <script src="js/timeline.js"></script>
   </body>
 
 </html>
