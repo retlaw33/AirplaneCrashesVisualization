@@ -12,21 +12,18 @@ function GenerateBubbles()
         .size([width, height])
         .padding(1.5);
 
-    d3.csv("data/BubbleGraphData.csv", function(d) {
-    d.Deaths = +d.Deaths;
-    if (d.Deaths) return d;
-    console.log(d.Deaths);
+    d3.csv("data/CleanedAirplaneCrashes.csv", function(d) {
+    d.Fatalities = +d.Fatalities;
+    if (d.Fatalities) return d;
     }, function(error, classes) {
     if (error) throw error;
 
     var root = d3.hierarchy({children: classes})
-        .sum(function(d) { return d.Deaths; })
+        .sum(function(d) { return d.value; })
         .each(function(d) {
-            if (Manufacturer = d.data.Manufacturer) {
-            var Manufacturer, i = Manufacturer.lastIndexOf(".");
-            d.Manufacturer = Manufacturer;
-            d.package = Manufacturer.slice(0, i);
-            d.class = Manufacturer.slice(i + 1);
+            if (Operator_Final_1 = d.data.Operator_Final_1) {
+            var Operator_Final_1, i = Operator_Final_1.lastIndexOf(".");
+            d.Operator_Final_1 = Operator_Final_1;
             }
         });
     
@@ -37,26 +34,26 @@ function GenerateBubbles()
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
     node.append("circle")
-        .attr("Manufacturer", function(d) { return d.Manufacturer; })
+        .attr("Operator_Final_1", function(d) { return d.Operator_Final_1; })
         .attr("r", function(d) { return d.r; })
-        .style("fill", function(d) { return color(13); });
+        .style("fill", function(d) { return color('#FF0000'); });
 
     node.append("clipPath")
-        .attr("Manufacturer", function(d) { return "clip-" + d.Manufacturer; })
+        .attr("Operator_Final_1", function(d) { return "clip-" + d.Operator_Final_1; })
         .append("use")
-        .attr("xlink:href", function(d) { return "#" + d.Manufacturer; });
+        .attr("xlink:href", function(d) { return "#" + d.Operator_Final_1; });
 
     node.append("text")
-        .attr("clip-path", function(d) { return "url(#clip-" + d.Manufacturer + ")"; })
+        .attr("clip-path", function(d) { return "url(#clip-" + d.Operator_Final_1 + ")"; })
         .selectAll("tspan")
-        .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
+        .data(function(d) { return "test"; })
         .enter().append("tspan")
         .attr("x", 0)
         .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
         .text(function(d) { return d; });
 
     node.append("title")
-        .text(function(d) { return d.Manufacturer + "\n" + format(d.Deaths); });
+        .text(function(d) { return d.Operator_Final_1 + "\n" + format(d.value); });
         });
 
     console.log("bubbleGraph made");
