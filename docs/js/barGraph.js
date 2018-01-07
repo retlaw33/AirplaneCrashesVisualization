@@ -54,7 +54,7 @@ function GenerateBarGraph()
 		d.Ground = +d.Ground;
 		//console.log(d.Ground);
 		d.Deaths = +d.Deaths;
-		console.log(d.Deaths);
+		//console.log(d.Deaths);
 		d.Summary = d.Summary;
 		//console.log(d.Summary);
 	  });
