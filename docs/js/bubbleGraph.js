@@ -59,7 +59,7 @@ function GenerateBubbles()
         .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
         .enter().append("tspan")
         .attr("x", 0)
-        .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+        .attr("y", function(d, i, nodes) { return 5 + (i - nodes.length / 2 - 0.5) * 10; })
         .text(function(d) { 
             return d; });
 
@@ -69,16 +69,14 @@ function GenerateBubbles()
         .data(function(d) { return d.data.Deaths.toString().split(/(?=[A-Z][^A-Z])/g); })
         .enter().append("tspan")
         .attr("x", 0)
-        .attr("y", function(d, i, nodes) { return 28 + (i - nodes.length / 2 - 0.5) * 10; })
+        .attr("y", function(d, i, nodes) { return 20 + (i - nodes.length / 2 - 0.5) * 10; })
         .text(function(d) { 
             return d; });
            
     node.append("title")
         .text(function(d) { 
-            return d.data.Location.toString() + "\n" + d.data.Summary.toString(); });
+            return "Location: " + d.data.Location.toString() + "\nSummary: " + d.data.Summary.toString(); });
         });
-
-    d3.select("#timelinePlaceHolder").attr("align","center");
 
     console.log("bubbleGraph made");
 }

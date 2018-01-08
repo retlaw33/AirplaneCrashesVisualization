@@ -18,10 +18,11 @@ section {
   padding: 150px 0;
 }
 
-.auto {cursor: default;}
-
 #bubbleGraphPlaceHolder {
   display: flex;
   justify-content: center;
   align-content: center;
+  margin-right: 1000px;
 }
+
+text { cursor: default; }

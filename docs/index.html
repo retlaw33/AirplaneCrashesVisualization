@@ -11,10 +11,11 @@
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/scrolling-nav.css" rel="stylesheet">
-    <link href="css/circleAnimation.css" rel="stylesheet">
+    <link href="css/worldmap.css" rel="stylesheet">
     
     <script src="js/d3v3.js"></script>
     <script src="js/d3v47.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
@@ -90,15 +91,18 @@
     <section id="dataVisualization">
       <div class="container text-center">
         <div class="row">
-          <div class="col-lg-11">
+          <div class="col-lg-12">
             <h2 id="bubbleGraphHeader">Some airplane crashes per manufacturer</h2>
-            <svg id="bubbleGraphPlaceHolder" width="1200" height="1200" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+            <svg id="bubbleGraphPlaceHolder" width="1350" height="1350" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
             <br><br><br><br><br><br><br><br><br><br><br><br>
             <h2 id="pieChartHeader">Deaths compared to survivors</h2>
             <div id="pieChartPlaceHolder" height="1000px"></div>
             <br><br><br><br><br><br><br><br><br><br><br><br>
             <h2 id="barGraphHeader">Different types of crashes</h2>
             <div id="barGraphPlaceHolder" height="1000px"></div>   
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 id="worldmapHeader">Where did all the crashes happen</h2>
+            <div id="worldmapPlaceHolder" height="1000px"></div>   
             <br><br><br><br><br><br><br><br><br><br><br><br>
             <h2 id="timelineHeader">Crashes over the years</h2>
             <p>If you don't see anything, turn off the protection of your browser! </p> 
@@ -115,7 +119,7 @@
             <h2>Story</h2>
             <p class="lead">
               Uruguayan Air Force Flight 571 was a chartered flight carrying 45 people, including a rugby union team, their friends, family, and associates. The plane crashed in the remote Andes on 13 October 1972 in an extremely heavy snowpack. Almost half of the passengers died in the crash, and several others died of the injuries or extreme colds. The survivors had little food and no source of heat in the harsh conditions at over 3,600 metres altitude. Faced with starvation and radio news reports that the search for them had been abandoned, the survivors ate the bodies of dead passengers that had been preserved in the snow. The human remains were cut up into tiny bite size strips and left to dry in the sun. Due to food shortage, every part of the human body that could be eaten was eaten. Rescuers did not learn of the survivors until 72 days after the crash, when passengers Nando Parrado and Roberto Canessa, after a 10-day trek across the Andes, found Chilean arriero Sergio Catalán,[1] who gave them food and then alerted the authorities to the existence of the other survivors.
-			</p>
+			      </p>
           </div>
         </div>
       </div>
@@ -129,9 +133,9 @@
 			<p class="lead">
 			  This website was made to show you that data visualzations can brainwash you.
 			  There are people abusing the power of data visualization, be crictical when somebody shows a graph.
-			  The information might be harvested the wrong way or they are only showing a little part the dataset to proove their point.
-			  Airplanes are not as dangerous as is shown above, but they are dangerous for the enviroment.
-			  A few small flights or a large flight is the same amout of greenhouse gasses as an car emits in a whole year.
+			  The information might be harvested the wrong way or they are only showing a part the dataset to proove their point.
+        Airplanes are not as dangerous as is shown above, actually 2017 was the safest year for airplanes in a long time.
+        They are dangerous for the enviroment though, A few small flights or a large flight emits the same amount of greenhouse gasses as a car in a whole year.
 			  So maybe planes are dangerous after all.
 			</p>
         </div>
@@ -161,6 +165,7 @@
     <script src="js/pieChart.js"></script>
     <script src="js/timeline.js"></script>
     <script src="js/bubbleGraph.js"></script>
+    <script src="js/worldMapVizualization.js"></script>
   </body>
 
 </html>
