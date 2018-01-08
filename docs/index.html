@@ -11,6 +11,7 @@
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/scrolling-nav.css" rel="stylesheet">
+    <link href="css/circleAnimation.css" rel="stylesheet">
     
     <script src="js/d3v3.js"></script>
     <script src="js/d3v47.js"></script>
@@ -89,9 +90,12 @@
     <section id="dataVisualization">
       <div class="container text-center">
         <div class="row">
-          <div class="col-lg-8 mx-auto">
+          <div class="col-lg-11">
             <h2 id="bubbleGraphHeader">Some airplane crashes per manufacturer</h2>
-            <svg width="960" height="960" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+            <svg id="bubbleGraphPlaceHolder" width="1200" height="1200" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 id="pieChartHeader">Deaths compared to survivors</h2>
+            <div id="pieChartPlaceHolder" height="1000px"></div>
             <br><br><br><br><br><br><br><br><br><br><br><br>
             <h2 id="barGraphHeader">Different types of crashes</h2>
             <div id="barGraphPlaceHolder" height="1000px"></div>   
@@ -99,9 +103,6 @@
             <h2 id="timelineHeader">Crashes over the years</h2>
             <p>If you don't see anything, turn off the protection of your browser! </p> 
             <div id="timelinePlaceHolder" height="1000px"></div>
-            <br><br><br><br><br><br><br><br><br><br><br><br>
-            <h2 id="pieChartHeader">Deaths compared to survivors</h2>
-            <div id="pieChartPlaceHolder" height="1000px"></div>
           </div>
         </div>
       </div>

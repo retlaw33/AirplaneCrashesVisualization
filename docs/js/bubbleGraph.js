@@ -13,9 +13,14 @@ function GenerateBubbles()
         .padding(1.5);
 
     d3.csv("data/BubbleGraphData.csv", function(d) {
+    /*console.log(d.Deaths);
+    console.log(d.Location);
+    console.log(d.Summary);*/
     d.Deaths = +d.Deaths;
+    d.Manufacturer = d.Manufacturer;
+    d.Location = d.Location;
+    d.Summary = d.Summary;
     if (d.Deaths) return d;
-    console.log(d.Deaths);
     }, function(error, classes) {
     if (error) throw error;
 
@@ -37,12 +42,14 @@ function GenerateBubbles()
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
     node.append("circle")
-        .attr("Manufacturer", function(d) { return d.Manufacturer; })
+        .attr("Manufacturer", function(d) { 
+            return d.Manufacturer; })
         .attr("r", function(d) { return d.r; })
-        .style("fill", function(d) { return color(13); });
+        .style("fill", function(d) { return color(d.package); });
 
     node.append("clipPath")
-        .attr("Manufacturer", function(d) { return "clip-" + d.Manufacturer; })
+        .attr("Manufacturer", function(d) { 
+            return "clip-" + d.Manufacturer; })
         .append("use")
         .attr("xlink:href", function(d) { return "#" + d.Manufacturer; });
 
@@ -53,11 +60,25 @@ function GenerateBubbles()
         .enter().append("tspan")
         .attr("x", 0)
         .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
-        .text(function(d) { return d; });
+        .text(function(d) { 
+            return d; });
 
+    node.append("text")
+        .attr("clip-path", function(d) { return "url(#clip-" + d.Manufacturer + ")"; })
+        .selectAll("tspan")
+        .data(function(d) { return d.data.Deaths.toString().split(/(?=[A-Z][^A-Z])/g); })
+        .enter().append("tspan")
+        .attr("x", 0)
+        .attr("y", function(d, i, nodes) { return 28 + (i - nodes.length / 2 - 0.5) * 10; })
+        .text(function(d) { 
+            return d; });
+           
     node.append("title")
-        .text(function(d) { return d.Manufacturer + "\n" + format(d.Deaths); });
+        .text(function(d) { 
+            return d.data.Location.toString() + "\n" + d.data.Summary.toString(); });
         });
+
+    d3.select("#timelinePlaceHolder").attr("align","center");
 
     console.log("bubbleGraph made");
 }
@@ -104,5 +125,3 @@ Utils.prototype = {
     }
 };
 var Utils = new Utils();
-
-
